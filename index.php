@@ -2,33 +2,24 @@
 
 include("config.php");
 
-if($_POST['u']!="")
-{
-$u=addslashes($_POST['u']);
-$p=addslashes($_POST['p']);
+if($_POST['u']!="") {
+    $u=addslashes($_POST['u']);
+    $p=addslashes($_POST['p']);
 
-if($u!="" && $p!="")
-{
-$sql="SELECT * FROM mrpg_users WHERE name='$u'";
-//echo $sql;
-$result = mysql_query($sql);
-while($row = mysql_fetch_array($result))
-{
-if($row['password']==$p)
-{
-
-setcookie("mrpg-ethbnd", strtolower($u . "@seperator@" . $p), time()+525600);
-header("Location: game.php");
-exit;
-}
-else
-{
-$message="Invalid username or password.";
-
-}
-}
-
-}
+    if($u!="" && $p!="") {
+        $sql="SELECT * FROM mrpg_users WHERE name='$u'";
+        //echo $sql;
+        $result = mysql_query($sql);
+        while($row = mysql_fetch_array($result)) {
+            if($row['password']==$p) {
+                setcookie("mrpg-ethbnd", strtolower($u . "@seperator@" . $p), time()+525600);
+                header("Location: game.php");
+                exit;
+            } else {
+            $message="Invalid username or password.";
+            }
+        }
+    }
 }
 
 ?>
@@ -37,7 +28,7 @@ $message="Invalid username or password.";
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 <title>EarthBound - Online RPG Game by Mop</title>
-<meta name="#"> 
+<meta name="#">
 <meta name="Keywords" content="#">
 <meta name="Copyright" content="">
 <meta name="Language" content="English">
@@ -48,22 +39,15 @@ $message="Invalid username or password.";
 
 <br></br>
 
-
-
-
-
-
 <table align="center" height=100 width="740" cellspacing="0" border="0" cellpadding="0" class="table2">
    <tr>
-   
+
 	 <td valign=center width="241" background="images/sidediv.jpg"><center>
 	<img src="images/home_icon.jpg"><a href="index.php" class="menulink" alt="Home"> Home</a> &nbsp;&nbsp;
 	<img src="images/about_icon.jpg"><a href="?login" class="menulink" alt="about"> Play Now!</a> &nbsp;&nbsp;
 	<img src="images/guestbook_icon.jpg"><a href="?register" class="menulink" alt="register"> Register</a><br><br>
 	<img src="images/about_icon.jpg"><a href="?highscores" class="menulink" alt="Top20"> Top 20</a> &nbsp;&nbsp;
-	<img src="images/guestbook_icon.jpg"><a href="forum/" class="menulink" alt="forum">Forum</a> 
-
-
+	<img src="images/guestbook_icon.jpg"><a href="forum/" class="menulink" alt="forum">Forum</a>
 
 
    	 </td><td align="right" width="499" background="images/right_side.jpg">
@@ -76,7 +60,7 @@ $message="Invalid username or password.";
 <table align="center" height=360 width="740" cellspacing="0" border="0" cellpadding="0" class="table3">
    <tr>
    	 <td align="left" width="239" bgcolor="#B3B3B3">
- 
+
 
 	<table align="center" height=150 width="200" cellspacing="0" cellpadding="0">
 	<tr>
@@ -96,9 +80,6 @@ $message="Invalid username or password.";
 		<hr width="180">
 
 
-
-
-
 		<div align="right" class="style1">Dec 1st 2007</div>
 
 		<div align="left" class="style2"><img src="images/smallarrow_icon.jpg"> Open!</div>
@@ -110,27 +91,20 @@ $message="Invalid username or password.";
 </tr>
 </table>
 
-
-
 	 <td align="center" width="1" bgcolor="#000000">
 	 <td align="center" width="499" bgcolor="#5A6674">
 
 <table align="center" height=300 width="435" cellspacing="0" cellpadding="15" class="table2">
 <tr>
-	<td valign="top" align="center"><?php 
-if($_SERVER['QUERY_STRING']=="register") { 
-include("register.php");
-} else if($_SERVER['QUERY_STRING']=="login") {
-
-echo "<form action='index.php?login' method='post'>$message<table border='0' cellpadding='1' cellspacing='0' class='style1'><tr><td>Username:</td><td><input type='text' name='u' value='$u'></td></tr><tr><td>Password</td><td><input type='password' name='p' value='$p'></td></tr><tr><td align='center' colspan='2'><input type='submit' value='Login'></td></tr></table></form>";
-
-
-} else if($_SERVER['QUERY_STRING']=="highscores") {
-
-include("hs.php");
-
-} else {
-echo '<div class="style4"><b>EarthBound Welcomes You</b></div>
+	<td valign="top" align="center"><?php
+    if($_SERVER['QUERY_STRING']=="register") {
+        include("register.php");
+    } else if($_SERVER['QUERY_STRING']=="login") {
+        echo "<form action='index.php?login' method='post'>$message<table border='0' cellpadding='1' cellspacing='0' class='style1'><tr><td>Username:</td><td><input type='text' name='u' value='$u'></td></tr><tr><td>Password</td><td><input type='password' name='p' value='$p'></td></tr><tr><td align='center' colspan='2'><input type='submit' value='Login'></td></tr></table></form>";
+    } else if($_SERVER['QUERY_STRING']=="highscores") {
+        include("hs.php");
+    } else {
+        echo '<div class="style4"><b>EarthBound Welcomes You</b></div>
 	<br>
 
 	<div class="style7"> </div>
@@ -170,7 +144,7 @@ The game is now open! Go play!
 		<div align="left" class="style3">
 
 		<form width:5em name="input" action="email.cgi" method="get">
-		E-mail: 
+		E-mail:
 		<input type="text" size="10" name="user">
 		<input type="submit" class="submit" value="Submit">
 		</form>-->

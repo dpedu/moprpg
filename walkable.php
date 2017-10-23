@@ -29,16 +29,13 @@ $walkable[61]=array(0,1,1,1,1,1,1,1,1,1,1,1,1,0,0);
 $walkable[62]=array(0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
 
 function walkable($x,$y) {
-global $walkable;
+    global $walkable;
 
-if($walkable[$y][$x]==1) {
-return true;
-} else {
-return false;
+    if($walkable[$y][$x]==1) {
+        return true;
+    } else {
+        return false;
+    }
 }
-
-}
-
-
 
 ?>

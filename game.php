@@ -14,30 +14,26 @@ $credsYo=explode("@seperator@", $credsYo);
 $u=strtolower($credsYo[0]);
 $p=strtolower($credsYo[1]);
 
-if($u=="")
-{
-header("Location: index.php?login");
+if($u=="") {
+	header("Location: index.php?login");
 }
 
 $result = mysql_query("SELECT * FROM mrpg_users WHERE name='$u'");
-while($row = mysql_fetch_array($result))
-{
+while($row = mysql_fetch_array($result)) {
 	if($row['password']!=$p)
 	{
-header("Location: index.php");
-exit;
+		header("Location: index.php");
+		exit;
 	}
 }
 
 
 $sql="SELECT * FROM mrpg_users WHERE name='$u'";
 $result = mysql_query($sql);
-while($row = mysql_fetch_array($result))
-{
-$char['x']=$row['x'];
-$char['y']=$row['y'];
+while($row = mysql_fetch_array($result)) {
+	$char['x']=$row['x'];
+	$char['y']=$row['y'];
 }
-
 
 
 ?><script type='text/javascript'>
@@ -52,62 +48,52 @@ strW5=""
 
 
 
-function qswitch() { 
-if(qSwitch==0) {
-qSwitch=1
-} else if(qSwitch==1) {
-qSwitch=0
-}
-drawQs(qSwitch)
-
+function qswitch() {
+	if(qSwitch==0) {
+		qSwitch=1
+	} else if(qSwitch==1) {
+		qSwitch=0
+	}
+		drawQs(qSwitch)
 }
 
 
 function dirtostring(dir) {
-if(dir==1) {
-
-return "<image src='images/icons_up.gif'>"
-} else if(dir==2) {
-
-return "<image src='images/icons_left.gif'>"
-} else if(dir==3) {
-
-return "<image src='images/icons_right.gif'>"
-} else if(dir==4) {
-
-return "<image src='images/icons_down.gif'>"
-} else if(dir==0) {
-
-return "<image src='images/exbox.gif'>"
-} else {
-return ""
-}
+	if(dir==1) {
+		return "<image src='images/icons_up.gif'>"
+	} else if(dir==2) {
+		return "<image src='images/icons_left.gif'>"
+	} else if(dir==3) {
+		return "<image src='images/icons_right.gif'>"
+	} else if(dir==4) {
+		return "<image src='images/icons_down.gif'>"
+	} else if(dir==0) {
+		return "<image src='images/exbox.gif'>"
+	} else {
+		return ""
+	}
 
 }
-
-
 
 function drawQs(x) {
-if(x==1) {
-qSwitch=1
-obj = document.getElementById('qswitch')
-obj.innerHTML='<image src=\'images/switchon.gif\' border=\'0\'>'
-obj = document.getElementById('overlay')
-obj.style.display=""
-obj2 = document.getElementById('walkdiv')
-obj2.style.display=""
-
-}
-if(x==0) {
-qSwitch=0
-obj = document.getElementById('qswitch')
-obj.innerHTML='<image src=\'images/switchoff.gif\' border=\'0\'>'
-obj = document.getElementById('overlay')
-obj.style.display="none"
-obj = document.getElementById('walkdiv')
-obj.style.display="none"
-
-}
+	if(x==1) {
+		qSwitch=1
+		obj = document.getElementById('qswitch')
+		obj.innerHTML='<image src=\'images/switchon.gif\' border=\'0\'>'
+		obj = document.getElementById('overlay')
+		obj.style.display=""
+		obj2 = document.getElementById('walkdiv')
+		obj2.style.display=""
+	}
+	if(x==0) {
+		qSwitch=0
+		obj = document.getElementById('qswitch')
+		obj.innerHTML='<image src=\'images/switchoff.gif\' border=\'0\'>'
+		obj = document.getElementById('overlay')
+		obj.style.display="none"
+		obj = document.getElementById('walkdiv')
+		obj.style.display="none"
+	}
 
 }
 
@@ -122,208 +108,195 @@ q7=null
 q8=null
 q9=null
 q10=null
+
 function walkfunct(d) {
-if(qSwitch==1 && d!=null) {
+	if(qSwitch==1 && d!=null) {
+		if(d==1) {
+			obj2 = document.getElementById('square')
+			obj2.style.top=(obj2.offsetTop - 16)
+		} else if(d==2) {
+			obj2 = document.getElementById('square')
+			obj2.style.left=(obj2.offsetLeft - 16)
+		} else if(d==3) {
+			obj2 = document.getElementById('square')
+			obj2.style.left=(obj2.offsetLeft + 16)
+		} else if(d==4) {
+			obj2 = document.getElementById('square')
+			obj2.style.top=(obj2.offsetTop + 16)
+		}
 
+		if(q1==null) {
+			q1=d
+		} else if(q2==null) {
+			q2=d
+		} else if(q3==null) {
+			q3=d
+		} else if(q4==null) {
+			q4=d
+		} else if(q5==null) {
+			q5=d
+		} else if(q6==null) {
+			q6=d
+		} else if(q7==null) {
+			q7=d
+		} else if(q8==null) {
+			q8=d
+		} else if(q9==null) {
+			q9=d
+		} else if(q10==null) {
+			q10=d
+			goque()
+		}
 
-
-if(d==1) {
-obj2 = document.getElementById('square')
-obj2.style.top=(obj2.offsetTop - 16)
-} else if(d==2) {
-obj2 = document.getElementById('square')
-obj2.style.left=(obj2.offsetLeft - 16)
-} else if(d==3) {
-obj2 = document.getElementById('square')
-obj2.style.left=(obj2.offsetLeft + 16)
-} else if(d==4) {
-obj2 = document.getElementById('square')
-obj2.style.top=(obj2.offsetTop + 16)
-} 
-
-
-
-if(q1==null) {
-q1=d
-} else if(q2==null) {
-q2=d
-} else if(q3==null) {
-q3=d
-} else if(q4==null) {
-q4=d
-} else if(q5==null) {
-q5=d
-} else if(q6==null) {
-q6=d
-} else if(q7==null) {
-q7=d
-} else if(q8==null) {
-q8=d
-} else if(q9==null) {
-q9=d
-} else if(q10==null) {
-q10=d
-goque()
-}
-
-drawque();
-
-
-
-}
-else
-{
-if(d==0) {
-document.all.TheFrame.src="actions.php"
-} else if(d==1) {
-document.all.TheFrame.src="actions.php?up"
-} else if(d==2) {
-document.all.TheFrame.src="actions.php?left"
-} else if(d==3) {
-document.all.TheFrame.src="actions.php?right"
-} else if(d==4) {
-document.all.TheFrame.src="actions.php?down"
-}
-}
+		drawque();
+	} else {
+		if(d==0) {
+			document.all.TheFrame.src="actions.php"
+		} else if(d==1) {
+			document.all.TheFrame.src="actions.php?up"
+		} else if(d==2) {
+			document.all.TheFrame.src="actions.php?left"
+		} else if(d==3) {
+			document.all.TheFrame.src="actions.php?right"
+		} else if(d==4) {
+			document.all.TheFrame.src="actions.php?down"
+		}
+	}
 }
 
 function drawque() {
-strW1=dirtostring(q1)
-strW2=dirtostring(q2)
-strW3=dirtostring(q3)
-strW4=dirtostring(q4)
-strW5=dirtostring(q5)
-strW6=dirtostring(q6)
-strW7=dirtostring(q7)
-strW8=dirtostring(q8)
-strW9=dirtostring(q9)
-strW10=dirtostring(q10)
+	strW1=dirtostring(q1)
+	strW2=dirtostring(q2)
+	strW3=dirtostring(q3)
+	strW4=dirtostring(q4)
+	strW5=dirtostring(q5)
+	strW6=dirtostring(q6)
+	strW7=dirtostring(q7)
+	strW8=dirtostring(q8)
+	strW9=dirtostring(q9)
+	strW10=dirtostring(q10)
 
-questring="Walking Que: "
+	questring="Walking Que: "
 
-if(strW1!="") {
-questring=questring+strW1
-}
-if(strW2!="") {
-questring=questring+", "+strW2
-}
-if(strW3!="") {
-questring=questring+", "+strW3
-}
-if(strW4!="") {
-questring=questring+", "+strW4
-}
-if(strW5!="") {
-questring=questring+", "+strW5
-}
-if(strW6!="") {
-questring=questring+", "+strW6
-}
+	if(strW1!="") {
+		questring=questring+strW1
+	}
+	if(strW2!="") {
+		questring=questring+", "+strW2
+	}
+	if(strW3!="") {
+		questring=questring+", "+strW3
+	}
+	if(strW4!="") {
+		questring=questring+", "+strW4
+	}
+	if(strW5!="") {
+		questring=questring+", "+strW5
+	}
+	if(strW6!="") {
+		questring=questring+", "+strW6
+	}
 
-if(strW7!="") {
-questring=questring+", "+strW7
-}
+	if(strW7!="") {
+		questring=questring+", "+strW7
+	}
 
-if(strW8!="") {
-questring=questring+", "+strW8
-}
+	if(strW8!="") {
+		questring=questring+", "+strW8
+	}
 
-if(strW9!="") {
-questring=questring+", "+strW9
-}
-if(strW10!="") {
-questring=questring+", "+strW10+"."
-}
+	if(strW9!="") {
+		questring=questring+", "+strW9
+	}
+	if(strW10!="") {
+		questring=questring+", "+strW10+"."
+	}
 
-
-
-obj = document.getElementById('theQue')
-obj.innerHTML=questring
+	obj = document.getElementById('theQue')
+	obj.innerHTML=questring
 }
 
 function goque() {
-document.all.TheFrame.src="actions.php?que=" + q1 + "," + q2 + "," + q3 + "," + q4 + "," + q5 + "," + q6 + "," + q7 + "," + q8 + "," + q9 + "," + q10
-clearque()
+	document.all.TheFrame.src="actions.php?que=" + q1 + "," + q2 + "," + q3 + "," + q4 + "," + q5 + "," + q6 + "," + q7 + "," + q8 + "," + q9 + "," + q10
+	clearque()
 }
 
 function clearque() {
-qued=0
-q1=null
-q2=null
-q3=null
-q4=null
-q5=null
-q6=null
-q7=null
-q8=null
-q9=null
-q10=null
+	qued=0
+	q1=null
+	q2=null
+	q3=null
+	q4=null
+	q5=null
+	q6=null
+	q7=null
+	q8=null
+	q9=null
+	q10=null
 
-obj = document.getElementById('square')
-obj.style.top=199
-obj.style.left=272
+	obj = document.getElementById('square')
+	obj.style.top=199
+	obj.style.left=272
 
 
-drawque()
+	drawque()
 }
 
 function tab(id) {
 
-     if(id==0) {
-document.all.TheFrame.src="actions.php"
-show('GUI-walktable')
-hide('GUI-battle');
-} else if(id==1) {
-drawQs(0)
-show('GUI-battle')
-hide('GUI-walktable')
-}
+	if(id==0) {
+		document.all.TheFrame.src="actions.php"
+		show('GUI-walktable')
+		hide('GUI-battle');
+	} else if(id==1) {
+		drawQs(0)
+		show('GUI-battle')
+		hide('GUI-walktable')
+	}
 }
 
 function show(id){
-if (document.getElementById){
-obj = document.getElementById(id);
-obj.style.display = "";
-}
+	if (document.getElementById){
+		obj = document.getElementById(id);
+		obj.style.display = "";
+	}
 }
 
 function hide(id){
-if (document.getElementById){
-obj = document.getElementById(id);
-obj.style.display = "none";
-}
+	if (document.getElementById){
+		obj = document.getElementById(id);
+		obj.style.display = "none";
+	}
 }
 
 function stats() {
-document.all.TheFrame.src="actions.php?stats"
+	document.all.TheFrame.src="actions.php?stats"
 }
 
 function battle(action) {
-if(action==0) {
-document.all.TheFrame.src="battle.php?act=attack"
-} else if(action==1) {
-document.all.TheFrame.src="battle.php?act=run"
-}
-
+	if(action==0) {
+		document.all.TheFrame.src="battle.php?act=attack"
+	} else if(action==1) {
+		document.all.TheFrame.src="battle.php?act=run"
+	}
 }
 </script>
 
 <style type="text/css">
-#overlay { 
-width: 470px;
-height: 329px; 
-position: absolute; 
-top: 38px; 
-left: 41px;
-}
-#square { 
-width: 15px;
-height: 15px; 
-position: absolute; 
-top: 199px; 
-left: 272px;
-
-}
+	#overlay {
+		width: 470px;
+		height: 329px;
+		position: absolute;
+		top: 38px;
+		left: 41px;
+	}
+	#square {
+		width: 15px;
+		height: 15px;
+		position: absolute;
+		top: 199px;
+		left: 272px;
+	}
 </style>
 
 <div id="overlay" style="display:none;"><image src='media/overlay.png'></div>
@@ -372,4 +345,3 @@ make_gui($frame, $guif);
 
 
 ?>
-<br><h3>Please note that the experience / level formula has been adjusted, and you may not be the same level as earlier.</h3>

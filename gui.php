@@ -1,9 +1,7 @@
 <?php
 
 function make_gui($t, $b) {
-
-
-echo '<table id="Table_01" width="537" height="594" border="0" cellpadding="0" cellspacing="0">
+    echo '<table id="Table_01" width="537" height="594" border="0" cellpadding="0" cellspacing="0">
 <tr>
 <td colspan="3">
 <img src="images/gui_01.gif" width="537" height="30" alt=""></td>
@@ -31,6 +29,5 @@ echo '<table id="Table_01" width="537" height="594" border="0" cellpadding="0" c
 </table>';
 
 }
-
 
 ?>

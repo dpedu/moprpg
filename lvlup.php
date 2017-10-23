@@ -9,35 +9,30 @@ $credsYo=explode("@seperator@", $credsYo);
 $u=strtolower($credsYo[0]);
 $p=strtolower($credsYo[1]);
 
-if($u=="")
-{
-header("Location: index.php?login");
+if($u=="") {
+	header("Location: index.php?login");
 }
 
 $result = mysql_query("SELECT * FROM mrpg_users WHERE name='$u'");
-while($row = mysql_fetch_array($result))
-{
-
-	if($row['password']!=$p)
-	{
-header("Location: index.php");
-exit;
+while($row = mysql_fetch_array($result)) {
+	if($row['password']!=$p) {
+		header("Location: index.php");
+		exit;
 	}
 }
 
 
 $sql="SELECT * FROM mrpg_users WHERE name='$u'";
 $result = mysql_query($sql);
-while($row = mysql_fetch_array($result))
-{
-$char['id']=$row['id'];
-$char['exp']=$row['level'];
-$mode=$row['mode'];
+while($row = mysql_fetch_array($result)) {
+	$char['id']=$row['id'];
+	$char['exp']=$row['level'];
+	$mode=$row['mode'];
 }
 
 if($mode!="lvlup") {
-header("Location: actions.php");
-exit;
+	header("Location: actions.php");
+	exit;
 }
 
 
@@ -53,17 +48,17 @@ $newlvl=level(2, $char['exp']);
 
 
 if($newlvl<=5) {
-$increase=2;
+	$increase=2;
 } else if($newlvl>5 && $newlvl<=7) {
-$increase=4;
+	$increase=4;
 } else if($newlvl>7 && $newlvl<=13) {
-$increase=6;
+	$increase=6;
 } else if($newlvl>13 && $newlvl<=20) {
-$increase=8;
+	$increase=8;
 } else if($newlvl>20 && $newlvl<=27) {
-$increase=10;
+	$increase=10;
 } else {
-$increase=10;
+	$increase=10;
 }
 
 $nhp=rand(1, $increase);
@@ -87,7 +82,7 @@ $sql="UPDATE mrpg_stat SET
 `strength`=`strength`+$nstrength,
 `force`=`force`+$nforce
 WHERE id='" . $char['id'] . "'";
- 
+
 
 mysql_query($sql);
 
@@ -126,7 +121,7 @@ imageString($fwim,5, $pos, $y+20, "Your level is now " . level(2, $char['exp']),
 
 
 header('Content-type: image/png');
-imagejpeg($fwim); 
-imageDestroy($fw); 
+imagejpeg($fwim);
+imageDestroy($fw);
 
 ?>
