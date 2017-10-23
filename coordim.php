@@ -80,7 +80,7 @@ while($row = mysql_fetch_array($result)) {
 	$dsrcx=$dx*16-230;
 	$dsrcy=$dy*16-160;
 
-	if((date("U")-$thetime)<=60) {
+	if((date("U")-$thetime)<=60 || $row['name'] == $u) {
 
 		if($row['dir']==1) {
 			imageCopyMerge($im, $images['chUp'], $dsrcx +230,  $dsrcy +144, 0, 0, 12, 32,100);
@@ -93,6 +93,7 @@ while($row = mysql_fetch_array($result)) {
 		}
 
 		//imageString($im,5, $dsrcx+230-(strlen($row['name'])*3), $dsrcy+129, ucfirst($row['name']), $black);
+		imageString($im,5, $dsrcx+233-(strlen($row['name'])*3)+1, $dsrcy+127+1, ucfirst($row['name']), $white);
 		imageString($im,5, $dsrcx+233-(strlen($row['name'])*3), $dsrcy+127, ucfirst($row['name']), $black);
 	}
 }

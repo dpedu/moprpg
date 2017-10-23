@@ -40,7 +40,7 @@ if($_POST['reg']==1) {
 
                     mysql_query("INSERT INTO  `mrpg_users` (  `id` ,  `name` ,  `password` ,  `x` ,  `y` ,  `dir` ,  `inventory` ,  `level` ,  `lastact` ,  `mode` )
                     VALUES (
-                    '$id',  '$u',  '$p',  '5',  '3',  '0',  '',  '0',  '0',  'norm'
+                    '$id',  '$u',  '$p',  '5',  '3',  '4',  '',  '0',  '0',  'norm'
                     );");
 
                     mysql_query("INSERT INTO `mrpg_confirm` VALUES (
