@@ -1,0 +1,13 @@
+mysql:
+    image: dpedu/mariadb
+    volumes:
+      - "./init.sql:/tmp/init.sql"
+      - "./sqldata/:/var/lib/mysql/"
+web:
+    image: dpedu/nginxfpm
+    links:
+      - mysql
+    ports:
+      - "127.0.0.1:8080:80"
+    volumes:
+      - ".:/usr/share/nginx/html/"
